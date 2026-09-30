@@ -10,7 +10,7 @@ load_dotenv()
 def get_smtp_connection():
     """
     Establish and return an SMTP_SSL connection to Gmail using the
-    application password stored in .env for the fixed sender account.
+    application password stored in .env for the configured sender account.
 
     Returns:
         smtplib.SMTP_SSL: Authenticated SMTP connection object
@@ -30,8 +30,16 @@ def get_smtp_connection():
     except smtplib.SMTPAuthenticationError:
         raise Exception(
             "Gmail SMTP authentication failed. Please check the app password "
-            f"for {GMAIL_EMAIL}."
+            f"for {GMAIL_EMAIL}. Ensure 2-Step Verification is enabled and "
+            "the App Password is correct."
         )
+    except smtplib.SMTPConnectError:
+        raise Exception(
+            "Failed to connect to Gmail SMTP server. "
+            "Check your internet connection and ensure smtp.gmail.com is accessible."
+        )
+    except smtplib.SMTPException as e:
+        raise Exception(f"Gmail SMTP error: {str(e)}")
     except Exception as e:
         raise Exception(f"Failed to connect to Gmail SMTP: {str(e)}")
 

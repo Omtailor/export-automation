@@ -19,7 +19,7 @@ load_dotenv()
 # ──────────────────────────────────────────────
 # Sender — Gmail address for campaign emails
 # ──────────────────────────────────────────────
-GMAIL_EMAIL = os.getenv("GMAIL_EMAIL", "your_gmail_address@gmail.com")
+GMAIL_EMAIL = os.getenv("GMAIL_EMAIL")
 # Gmail App Password is read from .env (GMAIL_APP_PASSWORD) and never stored here.
 
 # ──────────────────────────────────────────────
@@ -197,3 +197,21 @@ DAILY_SEND_LIMIT = int(os.getenv("DAILY_SEND_LIMIT", "100"))
 # MIN/MAX send delay in seconds (randomised between them)
 MIN_SEND_DELAY = int(os.getenv("MIN_SEND_DELAY", os.getenv("SEND_DELAY", "2")))
 MAX_SEND_DELAY = int(os.getenv("MAX_SEND_DELAY", str(MIN_SEND_DELAY + 2)))
+
+# ──────────────────────────────────────────────
+# Configuration validation
+# ──────────────────────────────────────────────
+def _validate_gmail_config():
+    """Validate that required Gmail credentials are configured."""
+    if not GMAIL_EMAIL:
+        raise ValueError(
+            "GMAIL_EMAIL is not set in .env file. "
+            "Please add GMAIL_EMAIL=your_gmail_address@gmail.com to your .env file."
+        )
+    if not os.getenv("GMAIL_APP_PASSWORD"):
+        raise ValueError(
+            "GMAIL_APP_PASSWORD is not set in .env file. "
+            "Please add GMAIL_APP_PASSWORD=your_gmail_app_password to your .env file."
+        )
+
+_validate_gmail_config()

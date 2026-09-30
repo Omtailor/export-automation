@@ -236,7 +236,9 @@ PRODUCT_NAME=Decorative Glassware & Home Décor Collection
 1. Enable 2-Step Verification on your Gmail account
 2. Go to Google Account → Security → App Passwords
 3. Generate an App Password for this application
-4. Add the App Password to your `.env` file
+4. Add both the Gmail address and App Password to your `.env` file:
+   - `GMAIL_EMAIL=your_gmail_address@gmail.com`
+   - `GMAIL_APP_PASSWORD=your_gmail_app_password`
 
 ### Run the Application
 
@@ -326,13 +328,15 @@ Create a `.env` file in the project root with the following variables:
 #### Required Variables
 
 ```env
-# Gmail Authentication
+# Gmail Authentication (required - must be set in .env)
 GMAIL_EMAIL=your_gmail_address@gmail.com
 GMAIL_APP_PASSWORD=your_gmail_app_password
 
 # Search API
 SERPER_API_KEY=your_serper_api_key
 ```
+
+**Note**: `GMAIL_EMAIL` and `GMAIL_APP_PASSWORD` are required and must be configured in `.env`. The application will fail to start if these are not set. These credentials are never hardcoded in the source code.
 
 #### Optional Variables
 
@@ -379,6 +383,8 @@ Customize queries via the `SEARCH_QUERIES` environment variable or modify `confi
 ### Sender Configuration
 
 Configure the sender email address via the `GMAIL_EMAIL` environment variable in `.env`. The system requires a Gmail account with 2-Step Verification enabled and an App Password for SMTP authentication.
+
+**Important**: Gmail credentials are never hardcoded in the source code. Both `GMAIL_EMAIL` and `GMAIL_APP_PASSWORD` must be configured in the `.env` file only.
 
 ---
 
@@ -706,7 +712,7 @@ Tests use monkeypatched SMTP - no real emails are sent during testing.
 1. Verify 2-Step Verification is enabled on Gmail account
 2. Confirm App Password (not regular password) is in `.env`
 3. Check Gmail account is not locked
-4. Ensure sender address matches hardcoded value in `config.py`
+4. Ensure `GMAIL_EMAIL` is correctly set in `.env`
 
 ### No Emails Found
 
@@ -777,7 +783,9 @@ Tests use monkeypatched SMTP - no real emails are sent during testing.
 
 ### System Security
 
-- Sender email hardcoded in `config.py` (prevents unauthorized changes)
+- Sender email configured via `GMAIL_EMAIL` in `.env` (never hardcoded in source)
+- App Password configured via `GMAIL_APP_PASSWORD` in `.env` (never hardcoded in source)
+- Configuration validation at startup ensures credentials are present
 - Process locks prevent concurrent duplicate sends
 - Atomic file writes prevent data corruption
 - No external infrastructure dependencies
