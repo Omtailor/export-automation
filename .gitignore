@@ -1,0 +1,66 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+token.json
+client_secret*.json
+
+# Local tooling and test output
+.vscode/
+.idea/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+.kilo/
+.devin/
+
+# Generated application data and reports
+data/*.csv
+!data/*.sample.csv
+reports/*
+!reports/.gitkeep
+
+# Local presentation and large binary assets
+assets/*.pdf
+assets/*.ppt
+assets/*.pptx
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Build and packaging artifacts
+build/
+dist/
+*.egg-info/
+*.whl
+*.tar.gz
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo

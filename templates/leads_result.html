@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Generation Results</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #34495e;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .result-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .result-card h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            padding: 1rem;
+            background-color: #ecf0f1;
+            border-radius: 6px;
+        }
+
+        .stat-item .label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .flash-messages {
+            margin-bottom: 1.5rem;
+        }
+
+        .flash {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+
+        .flash.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .flash.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .flash.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <h1>Export Automation</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/send">Send Campaign</a>
+            <a href="/report">Report</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="flash-messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="result-card">
+            <h2>Lead Generation Results</h2>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="label">New Buyers Found</div>
+                    <div class="value">{{ new_buyers }}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Available Buyers</div>
+                    <div class="value">{{ total_buyers }}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Flagged Emails</div>
+                    <div class="value">{{ flagged_count }}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Previously Sent (excluded)</div>
+                    <div class="value">{{ previously_sent }}</div>
+                </div>
+            </div>
+
+            <p class="help-text" style="color:#7f8c8d; margin-top:1rem;">
+                Search only — no emails were sent. Use <strong>Send Campaign</strong>
+                to contact the next batch of unsent buyers.
+            </p>
+
+            <div class="action-buttons" style="margin-top:1.5rem;">
+                <a href="/send" class="btn btn-primary">Send Campaign</a>
+                <a href="/" class="btn btn-secondary">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+buyer_name,company_name,email,website,country,source_platform,discovered_at
+John Smith,Example Glass Company,info@exampleglass.com,https://exampleglass.com,US,google,2026-09-30T10:00:00Z
+Jane Doe,Sample Home Decor,sales@sampledecor.com,https://sampledecor.com,US,alibaba,2026-09-30T11:00:00Z
+Bob Johnson,Test Wholesalers,wholesale@testwholesale.com,https://testwholesale.com,US,indiamart,2026-09-30T12:00:00Z

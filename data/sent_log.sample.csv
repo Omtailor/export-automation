@@ -1,0 +1,5 @@
+email,status,sent_at,campaign_subject,buyer_name,company_name,website,country,product,source_platform,attachment,error_message
+info@exampleglass.com,sent,2026-09-30T10:05:00Z,Wholesale Decorative Glassware,John Smith,Example Glass Company,https://exampleglass.com,US,Decorative Glassware & Home Décor Collection,google,company_presentation.pdf,
+sales@sampledecor.com,sent,2026-09-30T11:05:00Z,Wholesale Decorative Glassware,Jane Doe,Sample Home Decor,https://sampledecor.com,US,Decorative Glassware & Home Décor Collection,alibaba,company_presentation.pdf,
+wholesale@testwholesale.com,failed,2026-09-30T12:05:00Z,Wholesale Decorative Glassware,Bob Johnson,Test Wholesalers,https://testwholesale.com,US,Decorative Glassware & Home Décor Collection,indiamart,company_presentation.pdf,SMTP connection timeout
+invalid@badsite.com,failed,2026-09-30T13:05:00Z,Wholesale Decorative Glassware,Alice Invalid,Invalid Company,https://badsite.com,US,Decorative Glassware & Home Décor Collection,google,company_presentation.pdf,Invalid email address

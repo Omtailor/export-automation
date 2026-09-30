@@ -1,0 +1,4 @@
+buyer_name,company_name,email,website,country,source_platform,discovered_at,flagged_reason,flagged_date
+Test User,Test Company,test@mailinator.com,https://testcompany.com,US,google,2026-09-30T10:00:00Z,disposable,2026-09-30T10:01:00Z
+Demo User,Demo Corp,demo@tempmail.com,https://democorp.com,US,alibaba,2026-09-30T11:00:00Z,disposable,2026-09-30T11:01:00Z
+Sample User,Sample LLC,noreply@sample.com,https://samplellc.com,US,indiamart,2026-09-30T12:00:00Z,not_blocked_prefix,2026-09-30T12:01:00Z

@@ -1,0 +1,4 @@
+# Compatibility dependency file.
+# Kept alongside requirements.txt for existing tooling/scripts that reference
+# this name. It installs the exact same package set.
+-r requirements.txt
